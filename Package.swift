@@ -4,20 +4,53 @@
 import PackageDescription
 
 let package = Package(
-    name: "Novita",
-    products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(
-            name: "Novita",
-            targets: ["Novita"]),
-    ],
-    targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
-        .target(
-            name: "Novita"),
-        .testTarget(
-            name: "NovitaTests",
-            dependencies: ["Novita"]),
-    ]
+  name: "Novita",
+  platforms: [
+    .macOS(.v14)
+  ],
+  products: [
+    .library(
+      name: "Novita",
+      targets: ["Novita"]),
+  ],
+  dependencies: [
+    .package(
+      url: "https://github.com/apple/swift-openapi-generator",
+      branch: "main"
+    ),
+    .package(
+      url: "https://github.com/apple/swift-openapi-runtime",
+      branch: "main"
+    ),
+    .package(
+      url: "https://github.com/swift-server/swift-openapi-async-http-client",
+      branch: "main"
+    )
+  ],
+  targets: [
+    // Targets are the basic building blocks of a package, defining a module or a test suite.
+    // Targets can depend on other targets in this package and products from dependencies.
+    .target(
+      name: "Novita",
+      dependencies: [
+        .product(name: "OpenAPIRuntime", package: "swift-openapi-runtime"),
+        .product(name: "OpenAPIAsyncHTTPClient", package: "swift-openapi-async-http-client")
+      ],
+      resources: [
+        .copy("openapi-generator-config.yaml"),
+        .copy("openapi.yaml")
+      ],
+      plugins: [
+        .plugin(name: "OpenAPIGenerator", package: "swift-openapi-generator")
+      ]
+    ),
+    .testTarget(
+      name: "NovitaTests",
+      dependencies: ["Novita"],
+      resources: [
+        .copy("Ironman.png"),
+        .copy("conan.png")
+      ]
+    ),
+  ]
 )
