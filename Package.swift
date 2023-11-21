@@ -49,7 +49,8 @@ let package = Package(
       dependencies: ["Novita"],
       resources: [
         .copy("Ironman.png"),
-        .copy("conan.png")
+        .copy("conan.png"),
+        .copy("angelina.png")
       ]
     ),
   ]

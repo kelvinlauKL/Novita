@@ -39,8 +39,44 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Img2ImgResponse'
+  /v3/merge-face:
+    post:
+      operationId: mergeFace
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MergeFaceRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MergeFaceResponse'
 components:
   schemas:
+    MergeFaceResponse:
+      type: object
+      required:
+        - image_file
+        - image_type
+      properties:
+        image_file:
+          type: string
+        image_type:
+          type: string
+    MergeFaceRequest:
+      type: object
+      required:
+        - face_image_file
+        - image_file
+      properties:
+        face_image_file:
+          type: string
+        image_file:
+          type: string
     ProgressResponse:
       type: object
       required:
