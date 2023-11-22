@@ -82,7 +82,6 @@ components:
       required:
         - code
         - msg
-        - data
       properties:
         code:
           type: integer
@@ -320,7 +319,6 @@ components:
       required:
         - code
         - msg
-        - data
       properties:
         code:
           type: integer

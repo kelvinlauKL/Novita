@@ -22,8 +22,8 @@ final class NovitaTests: XCTestCase {
     let response = try await client.getImg2Img(req)
     XCTAssertEqual(response.code, 0)
     XCTAssertTrue(response.msg.isEmpty)
-    XCTAssertFalse(response.data.task_id.isEmpty)
-    XCTAssertNil(response.data.warn)
+    XCTAssert(response.data?.task_id.isEmpty == false)
+    XCTAssertNil(response.data?.warn)
   }
   
   func testGetProgress() async throws {
@@ -31,12 +31,12 @@ final class NovitaTests: XCTestCase {
     let response = try await client.getProgress(taskId: "5b4cd16f-4905-4502-a497-18cc0a78f0d5")
     XCTAssertEqual(response.code, 0)
     XCTAssertTrue(response.msg.isEmpty)
-    XCTAssertEqual(response.data.status, 2)
-    XCTAssertEqual(response.data.progress, 1.0)
-    XCTAssertEqual(response.data.eta_relative, 0.0)
-    XCTAssertEqual(response.data.imgs, ["https://stars-test.s3.amazonaws.com/free-prod/5b4cd16f-4905-4502-a497-18cc0a78f0d5-0.png"])
-    XCTAssertTrue(response.data.failed_reason?.isEmpty == true)
-    XCTAssertNil(response.data.current_images)
+    XCTAssertEqual(response.data?.status, 2)
+    XCTAssertEqual(response.data?.progress, 1.0)
+    XCTAssertEqual(response.data?.eta_relative, 0.0)
+    XCTAssertEqual(response.data?.imgs, ["https://stars-test.s3.amazonaws.com/free-prod/5b4cd16f-4905-4502-a497-18cc0a78f0d5-0.png"])
+    XCTAssert(response.data?.failed_reason?.isEmpty == true)
+    XCTAssertNil(response.data?.current_images)
   }
   
   func testMergeFaceResponse() async throws {
