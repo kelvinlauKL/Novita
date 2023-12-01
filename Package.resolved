@@ -132,7 +132,7 @@
       "location" : "https://github.com/swift-server/swift-openapi-async-http-client",
       "state" : {
         "branch" : "main",
-        "revision" : "701d752f2512acf4e27f1d6d3f771b5bdf0f82cb"
+        "revision" : "410d691db302f099f1c4ca390d2be53080049d69"
       }
     },
     {
@@ -141,7 +141,7 @@
       "location" : "https://github.com/apple/swift-openapi-generator",
       "state" : {
         "branch" : "main",
-        "revision" : "7f6baf7227c897f09bad0252cccac2cd57202383"
+        "revision" : "04470c13a50fd00b2ad1513334e8e439084ddbd2"
       }
     },
     {
@@ -150,7 +150,7 @@
       "location" : "https://github.com/apple/swift-openapi-runtime",
       "state" : {
         "branch" : "main",
-        "revision" : "d50b48957ccb388fb89db98a56c2337276298e79"
+        "revision" : "3452f2b837c634f48d07909fa819224bcacde5c6"
       }
     },
     {
